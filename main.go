@@ -50,5 +50,6 @@ func main() {
 
 	for i := 0; i < len(responseObject.Features); i++ {
 		fmt.Println(responseObject.Features[i].Attributes)
+		fmt.Println(responseObject.Features[i].Geometries)
 	}
 }

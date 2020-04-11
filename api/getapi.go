@@ -52,7 +52,7 @@ type DataResult struct {
 }
 
 const (
-	host     = "fullstack-postgres"
+	host     = "127.0.0.1"
 	port     = 5432
 	user     = "postgres"
 	password = "docker"
@@ -73,12 +73,6 @@ func conDB() {
 	if err != nil {
 		log.Fatal("Error creating connection pool: " + err.Error())
 	}
-	// defer db.Close()
-
-	// err = db.Ping()
-	// if err != nil {
-	// 	panic(err)
-	// }
 
 	log.Printf("Connected!\n")
 }

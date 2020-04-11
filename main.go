@@ -1,9 +1,18 @@
 package main
 
 import (
-	"github.com/desutedja/covid/api"
+	"net/http"
+
+	getapi "github.com/desutedja/CovidProvince/api"
+	"goji.io"
+	"goji.io/pat"
 )
 
 func main() {
-	http.HandleFunc("/", GetApi())
+
+	mux := goji.NewMux()
+	mux.HandleFunc(pat.Get("/"), getapi.GetAPI)
+	mux.HandleFunc(pat.Get("/CreateTable"), getapi.CreateTable)
+
+	http.ListenAndServe("localhost:8090", mux)
 }

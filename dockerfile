@@ -24,7 +24,7 @@ WORKDIR /app/
 
 # Copy the Pre-built binary file from the previous stage. Observe we also copied the .env file
 COPY --from=builder /app/covid-api .
-#COPY --from=builder /app/.env .       
+#COPY --from=builder /app/.env .
 
 # Expose port 8181 to the outside world
 EXPOSE 8181

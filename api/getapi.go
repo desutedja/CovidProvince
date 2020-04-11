@@ -52,7 +52,7 @@ type DataResult struct {
 }
 
 const (
-	host     = "localhost"
+	host     = "fullstack-postgres"
 	port     = 5432
 	user     = "postgres"
 	password = "docker"

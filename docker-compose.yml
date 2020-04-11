@@ -1,24 +1,6 @@
 version: "3"
 
 services:
-    postgres:
-        image: postgres:alpine
-        ports:
-        - "5433:5433"
-        volumes:
-        - ./dbdata:/var/lib/postgresql/data
-        environment:
-        - POSTGRES_PASSWORD=docker
-
-    covid:
-        build:
-            context: ../
-            dockerfile: ./docker/dockerfile
-        ports:
-            - "8181:5433"
-version: "3"
-
-services:
     app:
         container_name: full_app
         build: .

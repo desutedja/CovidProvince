@@ -11,7 +11,7 @@ COPY go.* /
 RUN go mod download 
 
 # Copy the source from the current directory to the working Directory inside the container 
-COPY . .
+COPY . /app
 
 # Build the Go app
 RUN CGO_ENABLED=0 GOOS=linux GOARCH=amd64 go build -o covid-api ./main.go

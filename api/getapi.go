@@ -53,7 +53,7 @@ type DataResult struct {
 
 const (
 	host     = "localhost"
-	port     = 5433
+	port     = 5432
 	user     = "postgres"
 	password = "docker"
 	dbname   = "covidprovinsi"
@@ -143,7 +143,7 @@ func GetAPI(w http.ResponseWriter, r *http.Request) {
 
 	//if last insert data more than two hour then insert new
 	if hour > 2 {
-		log.Printf("1!\n")
+		log.Printf("Inserting Data!\n")
 		response, err := http.Get("https://services5.arcgis.com/VS6HdKS0VfIhv8Ct/arcgis/rest/services/COVID19_Indonesia_per_Provinsi/FeatureServer/0/query?where=1%3D1&outFields=*&outSR=4326&f=json")
 
 		if err != nil {
@@ -202,7 +202,7 @@ func GetAPI(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	log.Printf("2!\n")
+	log.Printf("Read Data!\n")
 	query = `select FID,KodeProvinsi,Provinsi,KasusPositif,KasusSembuh,KasusMeninggal,Latitude,Longitude 
 				from covid where TO_CHAR(datetimecreated, 'YYYYMMDDHH24') = TO_CHAR((select MAX(datetimecreated) from covid),'YYYYMMDDHH24')`
 
